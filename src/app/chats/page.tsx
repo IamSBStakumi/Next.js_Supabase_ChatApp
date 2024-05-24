@@ -2,7 +2,7 @@
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { v4 } from "uuid";
 
 import ChatUI from "@/components/chats/chat";
@@ -29,6 +29,8 @@ const Chats = () => {
   const [inputName, setInputName] = useState("");
   const queryClient = useQueryClient();
 
+  useSupabaseSubscription(channelName);
+
   const {
     data: messageText,
     isError,
@@ -40,15 +42,6 @@ const Chats = () => {
     staleTime: 60000,
     refetchOnWindowFocus: true,
   });
-
-  useMemo(() => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const subscription = useSupabaseSubscription(channelName);
-
-    return async () => {
-      await subscription.unsubscribe();
-    };
-  }, [channelName]);
 
   const mutation = useMutation({
     mutationFn: async (newMessage: { comment: string; user_id: string; channel_name: string; user_name: string }) => {

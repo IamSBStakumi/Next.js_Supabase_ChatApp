@@ -38,7 +38,9 @@ const useSupabaseSubscription = (channelName: string) => {
 
   const subscription = setUpSubscription();
 
-  return subscription;
+  return async () => {
+    await subscription.unsubscribe();
+  };
 };
 
 export default useSupabaseSubscription;
