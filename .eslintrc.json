@@ -1,0 +1,51 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2021": true
+  },
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": true
+  },
+  "plugins": ["simple-import-sort", "@typescript-eslint", "redos"],
+  "rules": {
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        "checksVoidReturn": false
+      }
+    ],
+    "redos/no-vulnerable": "error",
+    "react/jsx-props-no-spreading": ["off"], // propsを渡すときにスプレッド構文の使用を禁止しない
+    "react/prop-types": "off", // コンポーネントにpropTypesプロパティの設定を強制しない
+    "react/require-default-props": "off", // defaultPropsでオプション引数に初期値を設定することを強制しない
+    // return文の前に1行空ける
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "return"
+      }
+    ],
+    // クラスのメンバを記述する際1行空ける
+    "lines-between-class-members": [
+      "error",
+      "always",
+      {
+        "exceptAfterSingleLine": true // クラスメンバの記述が1行の場合は1行空けなくても良い
+      }
+    ],
+    "react/jsx-uses-react": "off", // Reactのバージョンが17.0以降だとreactをインポートしなくてもjsx構文を使えるためオフ
+    "react/react-in-jsx-scope": "off" // 上記と同じ理由でオフ
+  }
+}
