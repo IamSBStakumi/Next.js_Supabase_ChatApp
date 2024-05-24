@@ -1,8 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable @typescript-eslint/no-floating-promises */
 "use client";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -47,6 +42,7 @@ const Chats = () => {
   });
 
   useMemo(() => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const subscription = useSupabaseSubscription(channelName);
 
     return async () => {
@@ -58,8 +54,8 @@ const Chats = () => {
     mutationFn: async (newMessage: { comment: string; user_id: string; channel_name: string; user_name: string }) => {
       await supabase.from("chat_log").insert(newMessage);
     },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["chatMessages", channelName] });
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ["chatMessages", channelName] });
     },
     onError: (err) => {
       console.error(err);
