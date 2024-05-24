@@ -1,8 +1,8 @@
 # Next-train
 
-<img src="https://img.shields.io/badge/-Node.js-339933.svg?logo=node.js&style=plastic">
+<img src="https://img.shields.io/badge/-Node.js-339933.svg?logo=node.js&style=plastic" alt="Node.js">
 
-<img src="https://img.shields.io/badge/-Next.js-000000.svg?logo=next.js&style=plastic">
+<img src="https://img.shields.io/badge/-Next.js-000000.svg?logo=next.js&style=plastic" alt="Next.js">
 
 ![Typescript](https://img.shields.io/badge/-Typescript-007ACC.svg?logo=typescript&style=plastic)
 
