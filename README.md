@@ -20,11 +20,11 @@
 ## Usage
 
 ```bash
-git clone git@gitlab.com:dev-krc/training/kuri884-training/next-train.git
+git clone git@github.com:IamSBStakumi/Next.js_Supabase_ChatApp.git
 ```
 
 ```bash
-cd next-train
+cd Next.js_Supabase_ChatApp
 ```
 
 boot
